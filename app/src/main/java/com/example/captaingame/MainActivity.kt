@@ -42,14 +42,20 @@ fun CaptainGame(){
 
     val treasuresFound = remember { mutableIntStateOf(0) }
     val sailedDirection = remember { mutableStateOf("North") }
-
+    val stormOrTreasure = remember {
+        mutableStateOf("")
+    }
     Column {
         Text(text = "Treasures Found : ${treasuresFound.intValue}")
         Text(text = "Direction Sailed : ${sailedDirection.value}")
+        Text(text = stormOrTreasure.value)
         Button(onClick = {
             sailedDirection.value = "North"
             if (Random.nextBoolean()){
                 treasuresFound.intValue++
+                stormOrTreasure.value = "WE FOUND A TREASURE"
+            } else {
+                stormOrTreasure.value = "STORM AHEAD"
             }
         }) {
             Text(text = "Sail North")
@@ -58,6 +64,9 @@ fun CaptainGame(){
             sailedDirection.value = "East"
             if (Random.nextBoolean()){
                 treasuresFound.intValue++
+                stormOrTreasure.value = "WE FOUND A TREASURE"
+            } else {
+                stormOrTreasure.value = "STORM AHEAD"
             }
         }) {
             Text(text = "Sail East")
@@ -66,6 +75,9 @@ fun CaptainGame(){
             sailedDirection.value = "West"
             if (Random.nextBoolean()){
                 treasuresFound.intValue++
+                stormOrTreasure.value = "WE FOUND A TREASURE"
+            } else {
+                stormOrTreasure.value = "STORM AHEAD"
             }
         }) {
             Text(text = "Sail West")
@@ -74,6 +86,9 @@ fun CaptainGame(){
             sailedDirection.value = "South"
             if (Random.nextBoolean()) {
                 treasuresFound.intValue++
+                stormOrTreasure.value = "WE FOUND A TREASURE"
+            } else {
+                stormOrTreasure.value = "STORM AHEAD"
             }
         }) {
             Text(text = "Sail South")
